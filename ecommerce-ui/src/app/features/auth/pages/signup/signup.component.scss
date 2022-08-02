@@ -1,0 +1,18 @@
+.create-account-form {
+  .policy-info {
+    margin: 10px 0;
+    color: red;
+    font-size: 14px;
+    font-style: normal;
+
+    a {
+      color: red($color: #000000);
+    }
+  }
+
+  .login-link {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+  }
+}
