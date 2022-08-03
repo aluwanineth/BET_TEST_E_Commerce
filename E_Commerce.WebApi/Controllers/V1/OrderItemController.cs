@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace E_Commerce.WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
+    [Authorize]
     public class OrderItemController : BaseApiController
     {
         /// <summary>
@@ -32,7 +33,6 @@ namespace E_Commerce.WebApi.Controllers.V1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Post(CreateOrderItemCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -51,7 +51,6 @@ namespace E_Commerce.WebApi.Controllers.V1
         /// </remarks>
         /// <response code="200">Returns deleted id</response>
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteOrderItemByIdCommand { Id = id }));

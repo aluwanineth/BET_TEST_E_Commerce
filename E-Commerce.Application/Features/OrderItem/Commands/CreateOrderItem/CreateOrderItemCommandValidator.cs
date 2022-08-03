@@ -5,15 +5,10 @@ using FluentValidation;
 
 
 namespace E_Commerce.Application.Features.OrderDetail.Commands.CreateOrderDetail
-{
-    internal class CreateOrderItemCommandValidator : AbstractValidator<CreateOrderItemCommand>
+{public class CreateOrderItemCommandValidator : AbstractValidator<CreateOrderItemCommand>
     {
-        private readonly IOrderRepositoryAsync _orderRepository;
-
-        public CreateOrderItemCommandValidator(IOrderRepositoryAsync orderRepository)
+        public CreateOrderItemCommandValidator()
         {
-            this._orderRepository = orderRepository;
-
             RuleFor(o => o.ProductId)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull();

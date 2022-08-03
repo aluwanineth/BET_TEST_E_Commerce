@@ -1,4 +1,5 @@
-﻿using E_Commerce.Application.Features.OrderItem.Queries.GetOrderItemById;
+﻿using E_Commerce.Application.Exceptions;
+using E_Commerce.Application.Features.OrderItem.Queries.GetOrderItemById;
 using E_Commerce.Application.Features.Orders.Queries.GetOrderById;
 using E_Commerce.Application.Interfaces;
 using E_Commerce.Application.Interfaces.Repositories;
@@ -55,6 +56,8 @@ namespace E_Commerce.Infrastructure.Persistence.Repository
         public async Task<GetOrderViewModel> GetOrder(int id)
         {
             var order = await _order.FindAsync(id);
+            if(order == null)
+                throw new ApiException($"No Order found.");
             var orderItems = await GetOrderItems(id);
             
             GetOrderViewModel getOrderViewModel = new GetOrderViewModel()

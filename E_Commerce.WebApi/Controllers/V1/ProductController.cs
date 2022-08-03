@@ -9,7 +9,6 @@ namespace E_Commerce.WebApi.Controllers.V1
 {
     [ApiVersion("1.0")]
     [Authorize]
-
     public class ProductController : BaseApiController
     {
  
